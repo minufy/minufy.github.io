@@ -1,8 +1,8 @@
 let ca = document.querySelector(".ca");
-let x = 0;
-let y = 0;
-let cx = 0;
-let cy = 0;
+let x = window.innerWidth/2;
+let y = window.innerHeight/2;
+let cx = x;
+let cy = y;
 
 let main = document.querySelector("main");
 
