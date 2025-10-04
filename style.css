@@ -11,7 +11,7 @@ body{
 }
 
 main{
-    width: 28rem;
+    width: min(28rem, 100vw);
     margin: auto;
     perspective: 1000px;
 }
