@@ -9,10 +9,10 @@ canvas.height = window.innerHeight
 const grid_size = 128;
 let grid = [];
 let visited = [];
-for(let y = 0; y < canvas.height / grid_size; y++){
+for(let y = 0; y < canvas.height/grid_size; y++){
     grid[y] = [];
     visited[y] = [];
-    for(let x = 0; x < canvas.width / grid_size; x++){
+    for(let x = 0; x < canvas.width/grid_size; x++){
         grid[y][x] = 0;
         visited[y][x] = false;
     }
@@ -35,16 +35,16 @@ function dfs(x, y){
     animation.push([x, y, lastTime]);
     let dirs = [0, 1, 2, 3];
     while(dirs.length > 0){
-        let idx = Math.floor(Math.random() * dirs.length);
+        let idx = Math.floor(Math.random()*dirs.length);
         let dir = dirs.splice(idx, 1)[0];
         dfs(x+mx[dir], y+my[dir]);
     }
 }
 
 function update(){
-    currentTime =  performance.now() / 1000;
-    const gridX = Math.floor(mouseX / grid_size);
-    const gridY = Math.floor(mouseY / grid_size);
+    currentTime =  performance.now()/1000;
+    const gridX = Math.floor(mouseX/grid_size);
+    const gridY = Math.floor(mouseY/grid_size);
     if (gridY >= 0 && gridY < grid.length && gridX >= 0 && gridX < grid[0].length)
         grid[gridY][gridX] = 1;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -52,9 +52,9 @@ function update(){
         for(let x = 0; x < grid[y].length; x++){
             grid[y][x] *= 0.94;
             ctx.fillStyle = `rgba(255, 255, 255, ${grid[y][x]/15})`;
-            ctx.fillRect(x * grid_size, y * grid_size, grid_size, grid_size);
+            ctx.fillRect(x*grid_size, y*grid_size, grid_size, grid_size);
             ctx.strokeStyle = "#ffffff10";
-            ctx.strokeRect(x * grid_size, y * grid_size, grid_size, grid_size);
+            ctx.strokeRect(x*grid_size, y*grid_size, grid_size, grid_size);
         }
     }
     for (let i = animation.length-1; i >= 0; i--){
@@ -75,8 +75,8 @@ window.onmousemove = function(e){
 }
 
 window.onclick = function(e){
-    const gridX = Math.floor(mouseX / grid_size);
-    const gridY = Math.floor(mouseY / grid_size);
+    const gridX = Math.floor(mouseX/grid_size);
+    const gridY = Math.floor(mouseY/grid_size);
     visited = visited.map(row => row.map(() => false));
     lastTime = currentTime;
     dfs(gridX, gridY);
